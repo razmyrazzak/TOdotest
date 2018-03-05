@@ -1,21 +1,59 @@
-# todotestapp
+# TODO TEST APPLICATION
 
-> todo app
+
+
+## Step one razyAPI - this is back end app
+
+``` bash
+# luman framwork 5.5.*
+# php 5.6.4
+# phpunit 6
+````
 
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
+# install composer in /razyAPI
+# copy egample env and create .env 
+# creat a database call todo 
+# update database configuration in env
+# run php artisan migrate - this should result success  
+# configur you developemnt envirment eg vagrant 
+# I am using local vhost domain name http://todo-api.com/ you can create whatever you wish
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## API use
+
+``` bash
+# list of todos : http://todo-api.com/api/todos
+# create new todo:  http://todo-api.com/api/todosCreate 
+parmas:[description]
+# update todo : http://todo-api.com/api/todosEdit
+params:[id,description]
+# delete todo : http://todo-api.com/api/todoDelete/{id}
+# update status of todo: http://todo-api.com/api/todoStatus/{id}
+
+```
+
+
+## Step two razyAPP - this is font end app 
+
+``` bash
+  "axios": "^0.18.0",
+  "cors": "^2.8.4",
+  "sweetalert": "^2.1.0",
+  "vue": "^2.5.2",
+  "vue-resource": "^1.5.0"
+````
+
+
+## Build Setup
+
+``` bash
+cd in to razyAPP npm run dev
+ update api doamin what ever the domain using for razyAPI app 
+ eg Vue.http.options.root = 'http://todo-api.com'
+ location :/src/api/api.js
+ 
+```
