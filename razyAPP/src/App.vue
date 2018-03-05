@@ -2,61 +2,53 @@
   <div>
     <!-- Render the TodoList component-->
      <!--TodoList becomes-->
-    <todo-list v-bind:todos="todos"></todo-list>
+    <todo-list v-bind:todos="todos" ></todo-list>
+    <create-todo v-on:create-todo="createTodo"></create-todo>
   </div>
-</template>
+</template>v-on:create-todo="createTodo"
 
 <script>
   import TodoList from './components/TodoList'
+  import CreateTodo from './components/CreateTodo'
+  import Todo from './components/Todo'
+  import api from'./api/api'
+  import sweetalert from 'sweetalert'
 
 export default {
   name: 'app',
   components: {
     TodoList,
+    CreateTodo,
+    Todo,
   },
-  data(){
+  data() {
     return {
-      todos:[{
-      }]
-    }
+      todos: [],
+      description: '',
+    };
   },
-  methods: {
-    getTodos: function () {
-      $.ajax({
-        context: this,
-        url: "/api/todos",
-        success: function ( result ) {
-          this.$set( "todos" ,result )
-        }
-      })
-    },
-//    onCreate: function (e) {
-//      e.preventDefault()
-//      $.ajax({
-//        context:this,
-//        type:"POST",
-//        data:{
-//          test:this.test,
-//          test2:this.test2
-//        },
-//        url: "api/todocreate",
-//        success:function (result) {
-//          this.
-//        }
-//      })
-//    }
 
+  methods: {
+
+    //load all todos on page landing or loading
+    getTodos(){
+      api.get('api/todos').then(res => {this.todos = res.data;
+        })
+              .catch(response => {
+                console.log(response);
+              });
+    },
+    createTodo(){
+      this.getTodos();
+      sweetalert('Success!', '*****ToDo Created*****', 'success');
+
+    },
   },
+  mounted(){
+    this.getTodos();
+  },
+
+
+
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
