@@ -17,4 +17,7 @@ $router->get('/', function () use ($router) {
 
 $router->get('api/todos', 'TodoController@showAllTods');
 $router->post('api/todosCreate', 'TodoController@store');
+$router->post('api/todosEdit', 'TodoController@edit');
+$router->get('api/todoDelete/{id}', 'TodoController@delete');
+$router->get('api/todoStatus/{id}', 'TodoController@updateStatus');
 
