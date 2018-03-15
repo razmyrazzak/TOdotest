@@ -37,6 +37,20 @@ params:[id,description]
 ```
 
 
+## Run test
+````bash
+# API project root run composer test, this shoud out put : 
+OK (5 tests, 5 assertions)
+
+1. Test Create  todo
+2. Test List all todo
+3. Test Delete todo
+4. Test Edit todo
+
+````
+
+
+
 ## Step two razyAPP - this is font end app 
 
 ``` bash
